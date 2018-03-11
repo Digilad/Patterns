@@ -54,6 +54,7 @@
     <Compile Include="Behavioural\TemplateMethod.cs" />
     <Compile Include="Behavioural\Visitor.cs" />
     <Compile Include="Behavioural\Visitor2.cs" />
+    <Compile Include="Behavioural\Visitor3.cs" />
     <Compile Include="Creational\AbstractFactory.cs" />
     <Compile Include="Creational\Builder.cs" />
     <Compile Include="Creational\FactoryMethod.cs" />

@@ -6,7 +6,7 @@ namespace Patterns
     {
         static void Main(string[] args)
         {
-            var a = new Behavioural.AcyclicVisitor();
+            var a = new Behavioural.Visitor3();
             a.Using();
             Console.ReadLine();
         }

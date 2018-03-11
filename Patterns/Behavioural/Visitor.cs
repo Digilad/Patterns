@@ -15,38 +15,38 @@ namespace Patterns.Behavioural
             var monkey = new Monkey();
             var lion = new Lion();
             var dolphin = new Dolphin();
-            var speak = new Speak();
-            monkey.Accept(speak);
-            lion.Accept(speak);
-            dolphin.Accept(speak);
+            var visitor = new AnimalVisitor();
+            monkey.Accept(visitor);
+            lion.Accept(visitor);
+            dolphin.Accept(visitor);
         }
     }
 
     public interface IAnimal
     {
-        void Accept(IAnimalOperation operation);
+        void Accept(IAnimalVisitor operation);
     }
 
-    public interface IAnimalOperation
+    public interface IAnimalVisitor
     {
-        void VisitMonkey(Monkey monkey);
-        void VisitLion(Lion lion);
-        void VisitDolphin(Dolphin dolphin);
+        void Visit(Monkey monkey);
+        void Visit(Lion lion);
+        void Visit(Dolphin dolphin);
     }
 
-    public class Speak : IAnimalOperation
+    public class AnimalVisitor : IAnimalVisitor
     {
-        public void VisitDolphin(Dolphin dolphin)
+        public void Visit(Dolphin dolphin)
         {
             dolphin.Speak();
         }
 
-        public void VisitLion(Lion lion)
+        public void Visit(Lion lion)
         {
             lion.Roar();
         }
 
-        public void VisitMonkey(Monkey monkey)
+        public void Visit(Monkey monkey)
         {
             monkey.Shout();
         }
@@ -59,9 +59,9 @@ namespace Patterns.Behavioural
             Console.WriteLine("Ooh oo aa aa!");
         }
 
-        public void Accept(IAnimalOperation operation)
+        public void Accept(IAnimalVisitor operation)
         {
-            operation.VisitMonkey(this);
+            operation.Visit(this);
         }
     }
 
@@ -72,9 +72,9 @@ namespace Patterns.Behavioural
             Console.WriteLine("Roaaaar!");
         }
 
-        public void Accept(IAnimalOperation operation)
+        public void Accept(IAnimalVisitor operation)
         {
-            operation.VisitLion(this);
+            operation.Visit(this);
         }
     }
 
@@ -85,9 +85,9 @@ namespace Patterns.Behavioural
             Console.WriteLine("Tuut tuttu tuutt!");
         }
 
-        public void Accept(IAnimalOperation operation)
+        public void Accept(IAnimalVisitor operation)
         {
-            operation.VisitDolphin(this);
+            operation.Visit(this);
         }
     }
 }
